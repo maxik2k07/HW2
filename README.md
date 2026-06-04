@@ -1,5 +1,5 @@
 # HW2
-Homework 2 software engineering 
+Homework 2 Software Engineering 
 
 # Система управления рецептами
 
