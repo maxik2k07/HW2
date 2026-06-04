@@ -1,7 +1,5 @@
 import pytest
-from recipes import Ingredient
-from recipes import Recipe
-from recipes import ShoppingList
+from recipes import Ingredient, Recipe, ShoppingList
 
 #Ingredient
 def test_ingredient_name():
@@ -120,27 +118,3 @@ def test_add_lists_not_changed():
     assert first_list._items[0][1] == "Пицца"
     assert len(second_list._items) == 2
     assert second_list._items[0][1] == "Эчпочмак"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
