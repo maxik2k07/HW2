@@ -42,7 +42,7 @@ class Recipe:
     def is_valid_ratio(ratio) -> bool:
         return (isinstance(ratio, int) or isinstance(ratio, float)) and ratio > 0
 
-    def scale(self, ratio: float) -> "Recipe":
+    def scale(self, ratio: float):
         if not Recipe.is_valid_ratio(ratio):
             raise ValueError("Коэффициент должен быть положительным числом")
         scaled = Recipe(self.title)
@@ -58,3 +58,16 @@ class Recipe:
         for ingredient in self.ingredients:
             lines.append(f"- {ingredient}")
         return "\n".join(lines)
+
+
+class DietaryRecipe(Recipe):
+    def __init__(self, title: str, diet_type: str, ingredients: list = None) -> None:
+        super().__init__(title, ingredients)
+        self.diet_type = diet_type
+
+    def scale(self, ratio: float):
+        scaled_recipe = super().scale(ratio)
+        return DietaryRecipe(scaled_recipe.title, self.diet_type, scaled_recipe.ingredients)
+
+    def __str__(self) -> str:
+        return f"[{self.diet_type}] {super().__str__()}"
